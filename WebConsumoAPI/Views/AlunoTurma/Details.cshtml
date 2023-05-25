@@ -1,0 +1,57 @@
+﻿@*@model WebConsumoAPI.Models.AlunoTurmaModel*@
+@model IEnumerable<WebConsumoAPI.Models.AlunoTurmaModel>
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    
+    @foreach (var item in Model){
+
+    
+    <dl class="row">
+        @*<dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.aluno_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.aluno_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.turma_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.turma_id)
+        </dd>*@
+        <dt class = "col-sm-2">
+            Nome
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => item.nome)
+        </dd>
+        <dt class = "col-sm-2">
+            Usuário
+        </dt>
+        <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.usuario)
+        </dd>
+        <dt class = "col-sm-2">
+            Turma
+        </dt>
+        <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.turma)
+        </dd>
+        <dt class = "col-sm-2">
+            Ano
+        </dt>
+        <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.ano)
+        </dd>
+    </dl>
+    }
+</div>
+<div>
+    @*@Html.ActionLink("Editar", "Edit", new {  id = model.aluno_id  }) |*@
+    <a asp-action="Index">Voltar</a>
+</div>

@@ -1,0 +1,77 @@
+﻿@model WebConsumoAPI.Models.AlunoTurmaModel
+@*@model IEnumerable<WebConsumoAPI.Models.AlunoModel>*@
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Cadastrar Aluno</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div style="display:none" class="form-group">
+                <label asp-for="aluno_id" class="control-label"></label>
+                <input asp-for="aluno_id" class="form-control" />
+                <span asp-validation-for="aluno_id" class="text-danger"></span>
+            </div>
+            <div style="display:none" class="form-group">
+                <label asp-for="turma_id" class="control-label"></label>
+                <input asp-for="turma_id" class="form-control" />
+                <span asp-validation-for="turma_id" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <label  class="control-label">Nome</label>
+                <input asp-for="nome" class="form-control" />
+                <span asp-validation-for="nome" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label  class="control-label">Usuário</label>                
+                <select asp-for="aluno_id"  class="form-control">
+                    <option  selected>Selecione o Usuário</option>
+                    @if (ViewBag.Alunos!=null){                    
+                        @foreach (var item in ViewBag.Alunos)
+                        {
+                            <option asp-for="aluno_id" value="@item.id">@item.usuario</option>
+                        }
+                    }
+                </select>
+                </div>
+            <label></label>
+                <div>
+                <label class="control-label">Turma</label>
+                <select asp-for="turma_id" class="form-control">
+                    <option selected>Selecione a Turma</option>
+                    @if (ViewBag.Turmas != null)
+                    {
+                        @foreach (var item in ViewBag.Turmas)
+                        {
+                            <option asp-for="turma_id" value="@item.id">@item.turma</option>
+                        }
+                    }
+                </select>
+                </div>
+                <label></label>                
+            <div class="form-group">
+                <input type="submit" value="Adicionar" class="btn btn-primary" />
+            </div>
+        </form>
+        @if (TempData["mensagemErro"] != null)
+        {
+            <div class="field-error">
+                @TempData["mensagemErro"]
+            </div>
+        }
+        <label></label>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,55 @@
+﻿@model WebConsumoAPI.Models.AlunoModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Novo Aluno</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label class="control-label">Nome</label>
+                <input asp-for="nome" class="form-control" />
+                <span asp-validation-for="nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">Usuário</label>
+                <input asp-for="usuario" class="form-control" />
+                <span asp-validation-for="usuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Senha</label>
+                <input asp-for="senha" type="password" class="form-control" />
+                <span asp-validation-for="senha" class="text-danger"></span>
+            </div>
+            <div>
+
+            </div>
+            <label></label>
+            <div class="form-group">
+                <input type="submit" value="Novo" class="btn btn-primary" />
+            </div>
+            <label></label>
+        </form>
+        @if (TempData["mensagemErro"] != null)
+        {
+                <div class="field-error">
+                @TempData["mensagemErro"]
+                </div>
+        }
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

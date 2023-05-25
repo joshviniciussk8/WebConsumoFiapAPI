@@ -1,0 +1,72 @@
+﻿@model IEnumerable<WebConsumoAPI.Models.AlunoTurmaModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Relação Aluno Turma</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar aluno em uma nova turma</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.aluno_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.turma_id)
+            </th>*@
+            <th>
+                Nome
+            </th>
+            <th>
+                Usuário
+            </th>
+            <th>
+                Turma
+            </th>
+            <th>
+                Ano
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @try
+        {
+            @if (Model != null)
+            {
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.usuario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.turma)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ano)
+                        </td>
+                        <td>
+
+                            @Html.ActionLink("Detalhes", "Details", new {  id=item.aluno_id  }) |
+                            @Html.ActionLink("Deletar", "Delete", new {   turma_id=item.turma_id, aluno_id=item.aluno_id })
+                        </td>
+                    </tr>
+                }
+            }
+        }catch{
+            <t>Nenhuma Relação Aluno Turma</t>
+        }
+
+    </tbody>
+</table>
